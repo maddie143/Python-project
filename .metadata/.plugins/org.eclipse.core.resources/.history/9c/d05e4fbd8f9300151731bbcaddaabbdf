@@ -1,0 +1,33 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+from Domain.Student import Student
+
+class ValidatorStudent():
+    def validate_student(self,st):
+        errors = []
+        
+        if st.get_stud_nume() == "":
+            errors.append("Numele trebuie sa contina cel putin un carcater.")
+            
+        if st.get_stud_nume().isalpha() == False:
+            errors.append("Numele trebuie sa fie compus doar din litere.")
+        
+        ok = 1
+        if st.get_stud_grupa() == "":
+            errors.append("Studentul trebuie sa faca parte dintr-un grup")
+            ok = 0
+            
+        if ok ==1 :
+            try:
+                int(st.get_stud_grupa())
+            except:
+                errors.append("Grupa este formata doar din cifre.")
+        
+        if st.get_stud_ID() == "":
+            errors.append("Studentul trebuie sa aiba un ID.")
+    
+    
+

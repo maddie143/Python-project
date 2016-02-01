@@ -1,0 +1,49 @@
+'''
+Created on Nov 30, 2015
+
+@author: Mada
+'''
+
+from Repository import ProblemRepository
+from Repository import StudentRepository
+from Domain import Note
+
+class RepositoryExceptionNote(Exception):
+    def __str__(self):
+        return "Datele introduse nu exista."
+    
+class RepositoryExceptionNoteE(Exception):
+    def __str__(self):
+        return "Datele introduse exista deja."
+class NoteRepository:
+    '''
+    Se folosesc repository-urile ProblemRepository si StudentRepository
+    '''
+    def __init__(self):
+        self.note = {}
+        
+    def Add_Nota(self, student, problema, nota):
+        new_nota = Note(student,problema, nota)
+        for i in self.note:
+            if self.note[i].Get_Nr_Prob() == problema.Get_Nr_Prob() and self.note[i].Get_Stud_Name() == student.Get_Stud_Name():
+                raise RepositoryExceptionNote
+            
+        self.note[len(self.note)] = new_nota
+        
+    '''
+    Se returneaza numarul total de note
+    '''
+    def Nr_Of_Notes(self):
+        return len(self.note)
+    
+    '''
+    Se returneaza o lista cu toate notele
+    '''
+    def List_Of_Notes(self):
+        return list(self.note.values())
+    
+    
+        
+    
+            
+        

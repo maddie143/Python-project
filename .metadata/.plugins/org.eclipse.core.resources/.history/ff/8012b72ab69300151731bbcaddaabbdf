@@ -1,0 +1,238 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+from Domain.Student import Student
+from Domain.Problema import Problema
+
+
+
+class ValidatorException(Exception):
+    def __init__(self,errors):
+        self.errors = errors
+    
+    '''
+    Se returneaza erorile de la un moment dat
+    '''
+    def getMsgs(self):
+        return self.errors
+    
+    def __str__(self):
+        return str(self.errors)
+
+class ValidatorStudent():
+    def __init__(self,st):
+        self.st = st
+    '''
+    st - tip 'class Student'
+    '''
+    def validate_student(self):
+        errors = []
+        
+        '''
+        Se verifica ca numele sa aiba cel putin un caracter 
+        '''
+        if self.st.get_stud_nume() == "":
+            errors.append("Numele trebuie sa contina cel putin un caracter.")
+           
+        '''
+        Se verifica ca numele sa fie compus doar din caractere litere
+        '''
+        if self.st.get_stud_nume().isalpha() == False:
+            errors.append("Numele trebuie sa fie compus doar din caractere litere.")
+        
+        '''
+        Se verifica ca grupul dat sa aiba caractere ( sa nu fie NULL )
+        '''
+        ok = 1
+        if self.st.get_stud_grupa() == "" :
+            errors.append("Grupul studentului trebuie sa aiba cel putin un caracter.")
+            ok = 0
+            
+        '''
+        Se verifica ca grupul dat sa fie compus doar din cifre
+        '''
+        if ok == 1:
+            try:
+                int(self.st.get_stud_grupa())
+                if int(self.st.get_stud_grupa()) < 1:
+                    errors.append("Grupa studentului trebuie sa fie un numar natural mai mare ca 0.")
+            except:
+                errors.append("Grupa trebuie sa fie formata doar din caractere cifre.")
+        
+        '''
+        Se vefifica ca ID-ul dat sa aiba cel putin un caracter ( sa nu fie NULL )
+        '''
+        ok = 1
+        if self.st.get_stud_ID() == "":
+            errors.append("Id-ul studentului trebuie sa aiba cel putin un caracter.")
+            ok = 0
+        
+        '''
+        Se verifica ca ID-ul dat sa fie compus doar din caractere cifre
+        '''
+        if ok == 1:
+            try:
+                int(self.st.get_stud_ID())
+                if self.st.get_stud_ID() < 1:
+                    errors.append("ID-ul studentului trebuie sa fie un numar natural mai mare ca 0.")
+            except:
+                errors.append("ID-ul trebuie sa fie format doar din caractere cifre.")
+        
+        '''
+        Daca exista erori dupa ce se verifica datele unui student, se afiseaza
+        '''
+        if len(errors) > 0:
+            raise ValidatorException(errors)
+        
+    
+'''
+def Validare_student_nou?
+'''
+class ValidatorProblema():
+    def __init__(self,pb):
+        self.pb = pb
+    '''
+    pb - tip 'class Problema'
+    '''
+    def validate_problema(self):
+        errors = []
+        
+        '''
+        Se verifica ca numarul laboratorului sa aiba cel putin un caracter si sa fie format doar din caractere cifre
+        '''
+        ok = 1
+        if self.pb.get_nr_lab() == "":
+            errors.append("Numarul laboratorului trebuie sa aiba cel putin un caracter.")
+            ok = 0
+            
+        if ok == 1:
+            try:
+                int(self.pb.get_nr_lab())
+                if self.pb.get_nr_lab() < 1:
+                    errors.append("Numarul laboratorului trebuie sa fie un numar natural mai mare ca 0.")
+            except:
+                errors.append("Numarul laboratorului trebuie sa fie format doar din caractere cifre.")
+                
+        '''
+        Se verifica ca numarul problemei sa aiba cel putin un caracter si sa fie format doar din caractere cifre
+        '''
+        ok = 1
+        if self.pb.get_nr_prob() == "":
+            errors.append("Numarul laboratorului trebuie sa aiba cel putin un caracter.")
+            ok = 0
+            
+        if ok == 1:
+            try:
+                int(self.pb.get_nr_prob())
+                if self.pb.get_nr_prob() < 1:
+                    errors.append("Numarul problemei trebuie sa fie un numar natural mai mare ca 0.")
+            except:
+                errors.append("Numarul laboratorului trebuie sa fie format doar din caractere cifre.")
+                
+        '''
+        Se verifica ca descrierea problemei sa aiba cel putin un caracter
+        '''
+        if self.pb.get_descriere() == "":
+            errors.append("Descrierea problemei trebuie sa aiba cel putin un caracter.")
+        
+        '''
+        Se verifica ca data sa fie specificata sub format zz/mm/yy
+        '''
+        prob = self.pb.get_deadline().split('/')
+        '''
+        In cazul in care nu este specificata in formatul cerut, se ridica clasa ValidatorException si se afiseaza erorile
+        '''
+        if len(prob) != 3:
+            errors.append("Deadline-ul trebuie sa fie de tipul zz/mm/yy.")
+            raise ValidatorException(errors)
+        
+        '''
+        Se verifica ca datele sa fie formate doar din caractere cifre si sa corespunda conditiilor (zi: 1-31,luna: 1-12, an:2015 - )
+        '''
+        try:
+            prob[0] = int(prob[0])
+            prob[1] = int(prob[1])
+            prob[2] = int(prob[2])
+            if prob[0] < 1 or prob[0] > 31 or prob[1] < 1 or prob[1] > 12 or prob[2] < 2015:
+                errors.append("Datele trebuie sa corespunda conditiilor: ziua: 1-31, luna: 1-12, anul: 2015 -  ")
+        except:
+            errors.append("Datele trebuie sa fie formate doar din caractere cifre.")
+            
+        if len(errors) > 0:
+            print("raise")
+            raise ValidatorException(errors)
+        
+    
+class ValidatorNote():
+    def __init__(self,stud,prob,nota):
+        self.stud = stud
+        self.prob = prob
+        self.nota = nota 
+    
+    def validate_nota(self):
+        errors = []
+        ver_st = ValidatorStudent(self.stud)
+        try:
+            ver_st.validate_student()
+        except ValidatorException as e:
+            nr = e.__str__()
+            if len(nr) > 0:
+                errors.append("Studentul nu are datele introduse valide.")
+        
+        ver_pb = ValidatorProblema(self.prob)
+        try:
+            ver_pb.validate_problema()
+        except ValidatorException as e:
+            nr = e.__str__()
+            if len(nr) > 0:
+                errors.append("Problema data nu are datele introduse valide.")
+                
+        if self.nota < 1 or self.nota > 10:
+            errors.append("Nota introdusa nu este valida. Introduceti o nota cuprinsa intre 1 si 10.")
+        
+        if len(errors)>0:
+            raise ValidatorException(errors)
+        
+        
+def testValidatorStudent():
+    st = Student("Mihai",'4',11)
+    ver = ValidatorStudent(st)
+    try:
+        ver.validate_student()
+    except ValidatorException as e:
+        assert e.__str__() == "['Numele trebuie sa fie compus doar din caractere litere.']"
+    
+    
+def testValidatorProblema():
+    pb = Problema(4,12,'primele 2 puncte','11/12/2015')
+    ver = ValidatorProblema(pb)
+    try:
+        ver.validate_problema()
+    except ValidatorException as e:
+        assert e.__str__() == "[]"
+        
+        
+testValidatorStudent()
+testValidatorProblema()
+
+
+
+        
+        
+        
+            
+            
+
+        
+    
+        
+        
+
+        
+            
+        
+    
+    
+

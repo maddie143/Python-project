@@ -1,0 +1,3 @@
+Maria 2 0
+Ionut 4 1
+Andreea 8 2

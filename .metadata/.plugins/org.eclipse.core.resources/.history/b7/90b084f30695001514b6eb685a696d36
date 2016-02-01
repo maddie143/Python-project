@@ -1,0 +1,29 @@
+'''
+Created on Nov 27, 2015
+
+@author: Mada
+'''
+class RepositoryExceptionProb(Exception):
+    def __str__(self):
+        return ""
+class ProblemRepository:
+    def __init__(self):
+        self.probleme = {}
+        
+    def Save_Problem(self,prob):
+        
+        for i in self.probleme:
+            if self.probleme[i].Get_Nr_Lab() == prob.Get_Nr_Lab() and self.probleme[i].Get_Nr_Prob() == prob.Get_Nr_Prob():
+                raise RepositoryExceptionProb
+        self.probleme(len(self.probleme)) = prob
+        
+    def Nr_Problems(self):
+        return len(self.probleme)
+    
+    def Get_Problems(self):
+        return list(self.probleme.values())
+    
+    def Find_By_Lab_Prob(self, nr_lab, nr_prob):
+        for i in self.probleme:
+            if self.__probleme[i].Get_Nr_Lab() == nr_lab and self.__probleme[i].Get_Nr_Prob() == nr_prob:
+                return self.__probleme[i]

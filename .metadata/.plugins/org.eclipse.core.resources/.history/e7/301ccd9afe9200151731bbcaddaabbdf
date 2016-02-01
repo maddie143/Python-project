@@ -1,0 +1,31 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Student():
+    def _init_(self,nume,grupa,ID):
+        self.nume  = nume
+        self.grupa = grupa
+        self.ID    = ID
+    
+    '''
+    Returneaza numele studentului
+    '''
+    def return_stud_nume(self):
+        return self.nume
+    
+    '''
+    Returneaza grupa studentului
+    '''
+    def return_stud_grupa(self):
+        return self.grupa
+    
+    ''' 
+    Returneaza ID-ul studentului
+    '''
+    def return_stud_ID(self):
+        return self.ID
+    
+    

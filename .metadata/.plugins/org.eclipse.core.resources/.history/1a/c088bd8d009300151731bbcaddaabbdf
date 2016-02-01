@@ -1,0 +1,53 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Problema():
+    def _init_(self, nr_lab, nr_problema,descriere,deadline):
+        self.nr_lab     = nr_lab
+        self.nr_problema = nr_problema
+        self.descriere  = descriere
+        self.deadline   = deadline
+
+    '''
+    Se returneaza o problema dupa numarul acesteia
+    '''
+    def return_prob_nr_problem(self):
+        return self.nr_problema
+    
+    '''
+    Se returneaza o problema dupa numarul laboratorului
+    '''
+    def return_prob_nr_lab(self):
+        return self.nr_lab
+    
+    '''
+    Se returneaza o problema dupa descriere
+    '''
+    def return_prob_descriere(self):
+        return self.descriere
+    
+    '''
+    Se returneaza o problema dupa deadline
+    '''
+    def return_prob_deadline(self):
+        return self.deadline
+    
+    
+def testProblema():
+    Prob  = Problema(4,13,'a,b','13/11/2015')
+    assert Prob.return_prob_nr_prob() == 13
+    assert Prob.return_prob_nr_lab() == 4
+    assert Prob.return_prob_descriere() == 'a,b'
+    assert Prob.return_prob_deadline() == '13/11/2015'
+    
+    Prob1 = Problema(7,2,'primele 2 puncte','20/11/2015')
+    assert Prob1.return_prob_nr_prob() == 2
+    assert Prob1.return_prob_nr_lab() == 7
+    assert Prob1.return_prob_descriere() == 'primele 2 puncte'
+    assert Prob1.return_prob_deadline() == '20/11/2015'
+    
+testProblema()
+    

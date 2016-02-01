@@ -1,0 +1,99 @@
+-- VERSION_4
+-- START DISKCACHE_2
+C:\Users\Mada\Desktop\FP\.metadata\.plugins\org.eclipse.core.resources\.projects\Lab\com.python.pydev.analysis\v2_indexcache
+Domain.Note|1448844864623661000|C:\Users\Mada\Desktop\FP\Lab\Domain\Note.py
+Repository.__init__|1448475306809414000|C:\Users\Mada\Desktop\FP\Lab\Repository\__init__.py
+Repository.ProblemRepository|1448843037749170000|C:\Users\Mada\Desktop\FP\Lab\Repository\ProblemRepository.py
+Repository.StudentRepository|1448848668600236000|C:\Users\Mada\Desktop\FP\Lab\Repository\StudentRepository.py
+Domain.Problema|1448627305959140000|C:\Users\Mada\Desktop\FP\Lab\Domain\Problema.py
+Controller.StudentController|1448848843531241000|C:\Users\Mada\Desktop\FP\Lab\Controller\StudentController.py
+Domain.Student|1448847638705329000|C:\Users\Mada\Desktop\FP\Lab\Domain\Student.py
+Domain.__init__|1448451614967737000|C:\Users\Mada\Desktop\FP\Lab\Domain\__init__.py
+Repository.NoteRepository|1448844958251016000|C:\Users\Mada\Desktop\FP\Lab\Repository\NoteRepository.py
+Domain.Validator|1448846155952521000|C:\Users\Mada\Desktop\FP\Lab\Domain\Validator.py
+Controller.__init__|1448846009370137000|C:\Users\Mada\Desktop\FP\Lab\Controller\__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+42
+14=ValidatorProblema
+38=ValidatorProblema.__init__
+2=Domain.Note
+4=Repository.ProblemRepository
+21=ProblemRepository
+25=RepositoryExceptionNoteE
+33=Note.Set_Nota
+13=ValidatorStudent
+19=NoteRepository
+1=Repository.NoteRepository
+30=Student.Set_Group
+36=Problema.Set_Nr_Lab
+31=ValidatorNote.__init__
+35=Problema.Set_Nr_Prob
+39=ProblemRepository.__init__
+5=Repository.StudentRepository
+20=StudentRepository
+3=Domain.Problema
+41=ValidatorStudent.__init__
+10=Student.Set_ID
+16=StudentController
+9=Student.__init__
+22=RepositoryExceptionProb
+15=ValidatorNote
+26=Problema.__init__
+37=Student.Set_Name
+34=NoteRepository.__init__
+7=Controller.StudentController
+11=Problema
+6=Domain.Student
+28=Problema.Set_Description
+32=Note.__init__
+40=StudentController.__init__
+17=Student
+27=Problema.Set_Deadline
+23=RepositoryExceptionStud
+12=ValidatorException
+24=RepositoryExceptionNote
+18=Note
+8=Domain.Validator
+29=ValidatorException.__init__
+42=StudentRepository.__init__
+-- END DICTIONARY
+-- START TREE 1
+7
+add|0|
+not|2|NoteRepository!9@Note!17@
+pro|2|Problema!25@ProblemRepository!33@
+rep|4|RepositoryExceptionNote!9@RepositoryExceptionNoteE!9@RepositoryExceptionProb!33@RepositoryExceptionStud!41@
+stu|3|Student!49@StudentController!57@StudentRepository!41@
+tes|13|testAddStudent!58@testValidatorProblema!66@TestSaveStudent!42@Test_Add_Note!10@testValidatorStudent!66@testValidatorNota!66@TestFindProb!34@TestUpdate!42@testProblema!26@TestUpdateProb!34@testStudent!50@testNote!18@TestSaveProb!34@
+val|4|ValidatorNote!65@ValidatorStudent!65@ValidatorException!65@ValidatorProblema!65@
+-- END TREE
+-- START TREE 2
+26
+ID|2|ID!9&51@ID!10&51@
+__i|11|__init__!11&26@__init__!12&66@__init__!13&66@__init__!14&66@__init__!15&66@__init__!16&58@__init__!17&50@__init__!18&18@__init__!19&10@__init__!20&42@__init__!21&34@
+__s|5|__str__!22&34@__str__!23&42@__str__!12&66@__str__!24&10@__str__!25&10@
+add|2|Add_Nota!19&10@AddStudent!16&58@
+che|1|Check_Existance!17&50@
+dea|2|deadline!26&27@deadline!27&27@
+del|3|Delete_By_ID!20&42@Delete!21&34@DeleteStudent!16&58@
+des|2|descriere!26&27@descriere!28&27@
+err|1|errors!29&67@
+fin|5|Find_By_Lab_Prob!21&34@Find_By_ID!20&42@FindStudentByID!16&58@Find_By_Name!20&42@FindStudentByName!16&58@
+get|20|Get_Stud!18&18@Get_Stud_Group!17&50@Get_Stud!20&42@Get_Problem!18&18@Get_Students!20&42@Get_Nr_Prob!11&26@Get_Description!11&26@Get_Problem_Grades!19&10@Get_Nr_Of_Notes!19&10@Get_Stud_Name!17&50@Get_Stud_ID!17&50@Get_Nota!18&18@GetStudents!16&58@Get_Prob!18&18@getMsgs!12&66@Get_Student!18&18@Get_Problems!21&34@Get_Deadline!11&26@Get_List_Of_Notes!19&10@Get_Nr_Lab!11&26@
+gru|2|grupa!9&51@grupa!30&51@
+lis|0|
+not|4|nott!31&67@nota!32&19@nota!33&19@note!34&11@
+nr_|6|nr_prob!26&27@nr_prob!35&27@Nr_Students!20&42@nr_lab!26&27@nr_lab!36&27@Nr_Problems!21&34@
+num|2|nume!9&51@nume!37&51@
+pb|1|pb!38&67@
+pro|2|probleme!39&35@problem!32&19@
+rep|1|repository!40&59@
+sav|2|Save_Problem!21&34@Save_Student!20&42@
+set|8|Set_Deadline!11&26@Set_Nr_Prob!11&26@Set_Name!17&50@Set_Nr_Lab!11&26@Set_Description!11&26@Set_Nota!18&18@Set_Group!17&50@Set_ID!17&50@
+sho|3|Show_Prob!11&26@Show_Stud!17&50@Show_Nota!18&18@
+st|1|st!41&67@
+stu|2|students!42&43@student!32&19@
+upd|3|UpdateStudent!16&58@Update_Prob!21&34@Update_Student!20&42@
+val|3|Validate_Problem!14&66@Validate_Nota!15&66@Validate_Student!13&66@
+-- END TREE

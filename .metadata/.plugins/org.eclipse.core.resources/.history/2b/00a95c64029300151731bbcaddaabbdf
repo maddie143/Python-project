@@ -1,0 +1,12 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Note():
+    def _init_(self,student,problem,nota):
+        self.student = student
+        self.problem = problem
+        self.nota    = nota
+        

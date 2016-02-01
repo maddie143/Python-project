@@ -1,0 +1,78 @@
+'''
+Created on Nov 30, 2015
+
+@author: Mada
+'''
+
+#from Repository import ProblemRepository
+#from Repository import StudentRepository
+from Domain import Note
+from Domain import Student
+from Repository.StudentRepository import StudentRepository
+
+
+class RepositoryExceptionNote(Exception):
+    def __str__(self):
+        return "Datele introduse nu exista."
+    
+class RepositoryExceptionNoteE(Exception):
+    def __str__(self):
+        return "Datele introduse exista deja."
+    
+class NoteRepository:
+    '''
+    Se folosesc repository-urile ProblemRepository si StudentRepository
+    '''
+    def __init__(self):
+        self.note = {}
+        
+    def Add_Nota(self, student, problema, nota):
+        new_nota = Note.Note(student,problema, nota)
+        for i in self.note:
+            if self.note[i].Get_Problem().Get_Nr_Prob() == problema.Get_Nr_Prob() and self.note[i].Get_Stud().Get_Stud_Name() == student.Get_Stud_Name():
+                raise RepositoryExceptionNote
+            
+        self.note[len(self.note)] = new_nota
+        
+    '''
+    Se returneaza numarul total de note
+    '''
+    def Get_Nr_Of_Notes(self):
+        return len(self.note)
+    
+    '''
+    Se returneaza o lista cu toate notele
+    '''
+    def Get_List_Of_Notes(self):
+        return list(self.note.values())
+    
+    '''
+    Pentru o problema data, se returneaza toate notele
+    '''
+    def Get_Problem_Grades(self, problem):
+        li = []
+        for i in self.note:
+            if self.note[i].Get_Nr_Prob() == problem.Get_Nr_Prob():
+                li.append(self.note[i].Get_Nota())
+                
+        return li
+    
+    
+def Test_Add_Note():
+    rep1 = StudentRepository()
+    rep2 = NoteRepository()
+    
+    student = Student.Student('Ion','211',len(rep1.students))
+    rep2.Add_Nota(student, '4.3',8)
+    rep2.Add_Nota(student, '4.2',9)
+    
+    assert rep2.Get_Nr_Of_Notes() == 2
+    
+Test_Add_Note()
+
+   
+        
+        
+    
+            
+        

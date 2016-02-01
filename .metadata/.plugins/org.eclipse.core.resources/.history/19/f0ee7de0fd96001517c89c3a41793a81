@@ -1,0 +1,16 @@
+'''
+Created on Nov 30, 2015
+
+@author: Mada
+'''
+
+from Domain import Student
+
+class StudentController:
+    def __init__(self,repository,validator):
+        self.repository = repository
+        self.validator  = validator
+        
+    def AddStudent(self,nume,grupa):
+        new_st = Student(nume,grupa,len(self.repository))
+        self.validator.ValidatorStudent(st)

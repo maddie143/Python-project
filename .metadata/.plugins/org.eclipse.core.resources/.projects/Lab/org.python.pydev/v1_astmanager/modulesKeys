@@ -1,0 +1,12 @@
+MODULES_MANAGER_V2
+Controller.StudentController|C:\Users\Mada\Desktop\FP\Lab\Controller\StudentController.py
+Controller.__init__|C:\Users\Mada\Desktop\FP\Lab\Controller\__init__.py
+Domain.Note|C:\Users\Mada\Desktop\FP\Lab\Domain\Note.py
+Domain.Problema|C:\Users\Mada\Desktop\FP\Lab\Domain\Problema.py
+Domain.Student|C:\Users\Mada\Desktop\FP\Lab\Domain\Student.py
+Domain.Validator|C:\Users\Mada\Desktop\FP\Lab\Domain\Validator.py
+Domain.__init__|C:\Users\Mada\Desktop\FP\Lab\Domain\__init__.py
+Repository.NoteRepository|C:\Users\Mada\Desktop\FP\Lab\Repository\NoteRepository.py
+Repository.ProblemRepository|C:\Users\Mada\Desktop\FP\Lab\Repository\ProblemRepository.py
+Repository.StudentRepository|C:\Users\Mada\Desktop\FP\Lab\Repository\StudentRepository.py
+Repository.__init__|C:\Users\Mada\Desktop\FP\Lab\Repository\__init__.py

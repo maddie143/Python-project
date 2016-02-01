@@ -1,0 +1,68 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+from Domain.Student import Student
+
+class RepositoryException(Exception):
+    def __str__(self):
+        return "Nu exista studentul cu aceste date in repository."
+
+class StudentRepository:
+    def __init__(self):
+        self.students = {}
+        
+    '''
+    Se seteaza id-ul noului student cu lungimea array-ului de studenti
+    '''
+    def Save_Student(self,student):
+
+        student.set_ID(len(self.students))
+        for i in self.students:
+            if self.students[i] == student:
+                raise RepositoryException()
+            
+        self.students[student.Get_Stud_ID()] = student
+        
+    '''
+    Se cauta un student dupa ID, in cazul in care exista se returneaza studentul,
+    altfel se ridica eroare ValueError
+    '''
+    def Find_By_ID(self,ID):
+        if ID <= len(self.students):
+            return self.students[ID]
+        else:
+            raise RepositoryException()
+        
+    def Delete_By_ID(self,ID):
+        self.students.pop(ID)
+        
+    '''
+    Se cauta ID-ul studentului in repository, daca exista, se modifica numele si grupa, daca
+    nu exista, se ridica eroarea RepositoryException()
+    '''
+    def Update_Student(self,nume,grupa,ID):
+        if ID in self.students:
+            self.students[ID].Set_Name(nume)
+            self.students[ID].Set_Group(grupa)
+        else:
+            raise RepositoryException()
+        
+    
+    '''
+    Se returneaza numarul total de studenti.
+    '''
+    def Nr_Students(self):
+        return len(self.students)
+    
+    '''
+    Se returneaza lista cu toti studentii.
+    '''
+    def Get_Students(self):
+        return list(self.students.values())
+    
+        
+    
+            
+        

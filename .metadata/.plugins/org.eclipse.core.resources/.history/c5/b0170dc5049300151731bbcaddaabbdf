@@ -1,0 +1,81 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Student():
+    def _init_(self,nume,grupa,ID):
+        self.nume  = nume
+        self.grupa = grupa
+        self.ID    = ID
+    
+    '''
+    Returneaza numele studentului
+    '''
+    def get_stud_nume(self):
+        return self.nume
+    
+    '''
+    Returneaza grupa studentului
+    '''
+    def get_stud_grupa(self):
+        return self.grupa
+    
+    ''' 
+    Returneaza ID-ul studentului
+    '''
+    def get_stud_ID(self):
+        return self.ID
+    
+    '''
+    Se actualizeaza numele studentului
+    '''
+    def set_nume(self,new_nume):
+        self.nume = new_nume
+        
+    '''
+    Se actualizeaza grupa studentului
+    '''
+    def set_grupa(self,new_grupa):
+        self.grupa = new_grupa
+        
+    '''
+    Se actualizeaza ID-ul studentului
+    '''
+    def set_ID(self,new_ID):
+        self.ID = new_ID
+        
+    '''
+    Se verifica daca exista deja un student cu numele
+    respectiv
+    Input:
+        comp_name - string
+    '''
+    def check_existance(self,comp_name):
+        return self.nume == comp_name
+    
+    '''
+    Se afiseaza studentul cu toate datele sale
+    '''
+    def show_stud(self):
+        print("Stundentul "+str(self.nume)+" din grupa "+str(self.grupa)+" are ID-ul "+str(self.ID)+".\n")
+        
+    
+    
+def testStudent():
+    Stud = Student("Andrei",43,1)
+    assert Stud.get_stud_nume() == "Andrei"
+    assert Stud.get_stud_ID() == 1
+    assert Stud.get_stud_grupa() == 43
+    Stud.set_ID(55)
+    assert Stud.get_stud_ID() == 55
+    
+    Stud1 = Student("Maria",11,2)
+    assert Stud1.get_stud_nume() == "Maria"
+    assert Stud1.get_stud_ID() == 2
+    assert Stud1.get_stud_grupa() == 11
+    Stud1.set_nume("Pavel")
+    assert Stud1.get_stud_nume() == "Pavel"
+
+testStudent()

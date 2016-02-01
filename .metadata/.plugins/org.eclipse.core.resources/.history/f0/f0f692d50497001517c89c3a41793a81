@@ -1,0 +1,112 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+from Domain.Student import Student
+
+class RepositoryExceptionStud(Exception):
+    def __str__(self):
+        return "Nu exista studentul cu aceste date in repository."
+
+class StudentRepository:
+    def __init__(self):
+        self.students = {}
+        
+    '''
+    Se seteaza id-ul noului student cu lungimea array-ului de studenti
+    '''
+    def Save_Student(self,student):
+
+        student.Set_ID(len(self.students))
+        for i in self.students:
+            if self.students[i] == student:
+                raise RepositoryExceptionStud()
+            
+        self.students[len(self.students)] = student
+        
+    '''
+    Se cauta un student dupa ID, in cazul in care exista se returneaza studentul,
+    altfel se ridica eroare ValueError
+    '''
+    def Find_By_ID(self,ID):
+        if ID <= len(self.students):
+            return self.students[ID]
+        else:
+            raise RepositoryExceptionStud()
+        
+    def Find_By_Name(self,name):
+        for i in self.students:
+            if self.students[i].nume == name:
+                return self.students[i]
+    def Delete_By_ID(self,ID):
+        self.students.pop(ID)
+        
+    '''
+    Se cauta ID-ul studentului in repository, daca exista, se modifica numele si grupa, daca
+    nu exista, se ridica eroarea RepositoryException()
+    '''
+    def Update_Student(self,nume,grupa,ID):
+        if ID in self.students:
+            self.students[ID].Set_Name(nume)
+            self.students[ID].Set_Group(grupa)
+        else:
+            raise RepositoryExceptionStud()
+        
+    
+    '''
+    Se returneaza numarul total de studenti.
+    '''
+    def Nr_Students(self):
+        return len(self.students)
+    
+    '''
+    Se returneaza lista cu toti studentii.
+    '''
+    def Get_Students(self):
+        #print(list(self.students.values()))
+        return list(self.students.values())
+    
+        
+    def Get_Stud(self,student):
+        return self.student
+            
+def TestSaveStudent():
+    '''
+    Se testeaza daca se adauga in rep
+    '''
+    rep     = StudentRepository()
+    student = Student('Ion','213',len(rep.students))
+    
+    # = 0 pentru ca nu a fost salvat
+    assert len(rep.students) == 0
+    
+    rep.Save_Student(student)
+    #a fost salvar, deci rep.size() creste
+    assert len(rep.students) == 1
+    
+    student1 = Student('Mircea','211',len(rep.students))
+    rep.Save_Student(student1)
+    assert len(rep.students) == 2
+    
+
+def TestUpdate():
+    rep     = StudentRepository()
+    student = Student('Ion','213',len(rep.students))
+    
+    rep.Save_Student(student)
+    # Se salveaza studentul
+    rep.Update_Student('Mihai', '10', int(student.Get_Stud_ID()))
+    #Se updateaza
+    
+    allsts = rep.Get_Students()
+    # Se testeaza sa existe datele corespunzatoare
+    assert allsts[0].Get_Stud_Name() == 'Mihai'
+    assert allsts[0].Get_Stud_Group() =='10'
+    
+
+
+
+TestSaveStudent()
+TestUpdate()
+

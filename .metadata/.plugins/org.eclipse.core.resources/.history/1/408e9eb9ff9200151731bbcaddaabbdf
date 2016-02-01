@@ -1,0 +1,43 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Student():
+    def _init_(self,nume,grupa,ID):
+        self.nume  = nume
+        self.grupa = grupa
+        self.ID    = ID
+    
+    '''
+    Returneaza numele studentului
+    '''
+    def return_stud_nume(self):
+        return self.nume
+    
+    '''
+    Returneaza grupa studentului
+    '''
+    def return_stud_grupa(self):
+        return self.grupa
+    
+    ''' 
+    Returneaza ID-ul studentului
+    '''
+    def return_stud_ID(self):
+        return self.ID
+    
+    
+def testStudent():
+    Stud = Student("Andrei",43,01)
+    assert Stud.return_stud_nume() == "Andrei"
+    assert Stud.return_stud_ID() == 01
+    assert Stud.return_stud_grupa() == 43
+    
+    Stud1 = Student("Maria",11,02)
+    assert Stud1.return_stud_nume() == "Maria"
+    assert Stud1.return_stud_ID() == 02
+    assert Stud1.return_stud_grupa() == 11
+    
+testStudent()

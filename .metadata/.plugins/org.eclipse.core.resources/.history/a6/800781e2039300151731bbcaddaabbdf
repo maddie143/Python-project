@@ -1,0 +1,55 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+from Domain import Student
+from Domain.Problem import Problema
+
+class Note():
+    def _init_(self,student,problem,nota):
+        self.student = student
+        self.problem = problem
+        self.nota    = nota
+        
+    '''
+    Se returneaza nota pentru problema curenta
+    '''
+    def get_nota(self):
+        return self.nota
+    
+    '''
+    Se seteaza/actualizeaza nota pentru problema curenta
+    '''
+    def set_nota(self,new_nota):
+        self.nota = new_nota
+    
+    '''
+    Se returneaza numele studentului
+    '''
+    def get_stud(self):
+        return self.student.get_stud_nume()
+    
+    '''
+    Se returneaza problema
+    '''
+    def get_prob(self):
+        return self.problem.get_nr_problem()
+    
+    '''
+    Se afiseaza datele studentului cu problema si nota primita
+    '''
+    def show_nota(self):
+        print("Studentul "+str(self.student.get_stud_nume())+" a primit nota "+str(self.nota)+" pe problema "+str(self.problem.get_nr_problem())+".")
+        
+    
+def testNote():
+    St = Student("Andrei",11,01)
+    Pb = Problema(7,13,'primele 2 puncte','11/11/2015')
+    Not = Note(St,Pb,5)
+    assert Not.get_nota() == 5
+    assert Not.get_stud() == "Andrei"
+    assert Not.get_prob() == "13"
+    
+testNote()
+    

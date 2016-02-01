@@ -1,0 +1,38 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Problem():
+    def _init_(self, nr_lab, nr_problem,descriere,deadline):
+        self.nr_lab     = nr_lab
+        self.nr_problem = nr_problem
+        self.descriere  = descriere
+        self.deadline   = deadline
+
+    '''
+    Se returneaza o problema dupa numarul acesteia
+    '''
+    def return_prob_nr_problem(self):
+        return self.nr_problem
+    
+    '''
+    Se returneaza o problema dupa numarul laboratorului
+    '''
+    def return_prob_nr_lab(self):
+        return self.nr_lab
+    
+    '''
+    Se returneaza o problema dupa descriere
+    '''
+    def return_prob_descriere(self):
+        return self.descriere
+    
+    '''
+    Se returneaza o problema dupa deadline
+    '''
+    def return_prob_deadline(self):
+        return self.deadline
+    
+    

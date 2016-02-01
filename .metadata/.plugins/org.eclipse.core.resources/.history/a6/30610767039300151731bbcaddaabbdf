@@ -1,0 +1,15 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Note():
+    def _init_(self,student,problem,nota):
+        self.student = student
+        self.problem = problem
+        self.nota    = nota
+        
+    def show_nota(self):
+        print("Studentul "+str(self.student.get_stud_nume())+" a primit nota "+str(self.nota)+" pe problema "+str(self.problem.get_nr_problem())+".")
+        

@@ -1,0 +1,14 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+
+class Student():
+    def _init_(self,nume,grupa,ID):
+        self.nume  = nume
+        self.grupa = grupa
+        self.ID    = ID
+    
+    def return_nume(self):
+        return self.nume

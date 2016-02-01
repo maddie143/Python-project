@@ -1,0 +1,114 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+from Domain.Student import Student
+from Domain.Problema import Problema
+
+
+class ValidatorException():
+    def __init__(self,errors):
+        self.errors = errors
+    
+    '''
+    Se returneaza erorile de la un moment dat
+    '''
+    def getErrors(self):
+        return self.errors
+
+
+
+
+
+class ValidatorStudent():
+    '''
+    st - tip class Student
+    '''
+    def validate_student(self,st):
+        errors = []
+        
+        '''
+        Se verifica ca numele sa aiba cel putin un caracter 
+        '''
+        if st.get_stud_nume() == "":
+            errors.append("Numele trebuie sa contina cel putin un caracter.\n")
+           
+        '''
+        Se verifica ca numele sa fie compus doar din caractere litere
+        '''
+        if st.get_stud_nume().isalpha() == False:
+            errors.append("Numele trebuie sa fie compus doar din litere.\n")
+        
+        '''
+        Se verifica ca grupul dat sa aiba caractere ( sa nu fie NULL )
+        '''
+        ok = 1
+        if st.get_stud_grupa() == "" or st.get_stud_grupa() < 1:
+            errors.append("Studentul trebuie sa faca parte dintr-un grup valid ( >0 ).\n")
+            ok = 0
+            
+        '''
+        Se verifica ca grupul dat sa fie compus doar din cifre
+        '''
+        if ok == 1 :
+            try:
+                int(st.get_stud_grupa())
+            except:
+                errors.append("Grupa trebuie sa fie formata doar din cifre.\n")
+        
+        '''
+        Se vefifica ca ID-ul dat sa aiba caractere ( sa nu fie NULL )
+        '''
+        ok = 1
+        if st.get_stud_ID() == "" or st.get_stud_ID() < 1:
+            errors.append("Studentul trebuie sa aiba un ID valid ( >0 ).\n")
+            ok = 0
+        
+        '''
+        Se verifica ca ID-ul dat sa fie compus doar din cifre
+        '''
+        if ok == 1:
+            try:
+                int(st.get_stud_ID())
+            except:
+                errors.append("ID-ul trebuie sa fie format doar din cifre.\n")
+        
+        '''
+        Daca exista erori dupa ce se verifica datele unui student, se afiseaza
+        '''
+        if len(errors) > 0:
+            error = ValidatorException(errors)
+            raise error.getErrors()
+        
+    
+'''
+def Validare_student_nou?
+'''
+class ValidatorProblema():
+    def validate_problema(self,pb):
+        '''
+            def __init__(self, nr_lab, nr_prob,descriere,deadline):
+        self.nr_lab     = nr_lab
+        self.nr_prob    = nr_prob
+        self.descriere  = descriere
+        self.deadline   = deadline
+        '''
+        errors = []
+        
+        ok = 1
+        if pb.get_nr_lab() == "" or pb.get_nr_lab() < 1:
+            errors.append("Numarul laboratorului trebuie sa fie ")
+            
+
+        
+    
+        
+        
+
+        
+            
+        
+    
+    
+

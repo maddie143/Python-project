@@ -1,0 +1,74 @@
+'''
+Created on Nov 30, 2015
+
+@author: Mada
+'''
+
+from Domain import Student
+from Domain import Validator
+from Repository import StudentRepository
+
+class StudentController:
+    def __init__(self,repository,validator):
+        self.repository = repository
+        self.validator  = validator
+        
+    def AddStudent(self,nume,grupa):
+        #Se seteaza un nou student
+        new_st = Student(nume,grupa,len(self.repository))
+        #Se valideaza datele studentului
+        self.validator.ValidatorStudent(new_st)
+        #Se salveaza in repository
+        self.repository.Save_Student(new_st)
+        
+    '''
+    Sterge student dupa ID
+    '''
+    def DeleteStudent(self,ID):
+        self.repository.Delete_By_ID(ID)
+        
+    '''
+    Se actualizeaza datele unui student
+    '''
+    def UpdateStudent(self,nume,grupa,ID):
+        self.rep.Update_Student(nume,grupa,ID)
+    
+    '''
+    Se cauta un elev dupa ID
+    '''
+    def FindStudentByID(self,ID):
+        return self.rep.Find_By_ID(ID)
+    
+    '''
+    Se cauta un student dupa nume
+    '''
+    def FindStudentByName(self,nume):
+        return self.rep.Find_By_Name(nume)
+    
+    '''
+    Se returneaza toti studentii
+    '''
+    def GetStudents(self):
+        return self.rep.Get_Students()
+    
+    
+def testAddStudent():
+    
+    rep = StudentRepository()
+    st  = ctr.AddStudent('mihai', '213')
+    val = Validator.ValidatorStudent(st)
+    ctr = StudentController(rep, val)
+    assert st.getID() == 0
+    assert st.getNume() == 'mihai'
+    
+    allsts = ctr.getStudents()
+    assert len(allsts) == 1
+    assert allsts[0] == st
+    
+    st = ctr.AddStudent('gore', '211')
+    assert st.getID() == 1
+    assert st.getNume() == 'gore'
+    
+    allsts = ctr.getStudents()
+    assert len(allsts) == 2
+    assert allsts[1] == st

@@ -1,0 +1,24 @@
+'''
+Created on Nov 25, 2015
+
+@author: Mada
+'''
+import Repository
+
+class RepositoryException(Exception):
+    pass
+
+class StudentRepository:
+    def __init__(self):
+        self.students = {}
+        
+    def SalvareStudent(self,student):
+        '''
+        Se seteaza id-ul noului student cu lungimea array-ului de studenti
+        '''
+        student.set_ID(len(self.students))
+        for i in self.students:
+            if self.students[i] == student:
+                raise RepositoryException()
+            
+        self.students[student.get_stud_ID()] = student
